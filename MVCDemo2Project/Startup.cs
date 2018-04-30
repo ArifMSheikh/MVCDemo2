@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using MVCDemo2Project.Models;
 
 namespace MVCDemo2Project
 {
@@ -22,6 +24,8 @@ namespace MVCDemo2Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<CustomerInformationSystemsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CustomerInformationSystems")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
